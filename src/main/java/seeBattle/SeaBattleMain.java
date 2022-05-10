@@ -9,9 +9,7 @@ import javax.swing.*;
  20210409 - Ускорил рисование окна, убрал в условие отрисовку поля.
  20210409 - Добавил возможность ходить повторно, после попадания в корабль, для игрока и компьютера.
 
-Добавить вывод окна о выигрыше/проигрыше
-import javax.swing.JOptionPane;
-
+ Добавить вывод окна о выигрыше/проигрыше import javax.swing.JOptionPane;
 **/
 
 public class SeaBattleMain extends JFrame {

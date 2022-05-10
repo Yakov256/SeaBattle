@@ -22,7 +22,6 @@ class Board {
     }
 
     Board() {
-        //System.out.println("Инициализация настроек");
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) board[i][j] = new Cell();
         }
@@ -51,7 +50,7 @@ class Board {
         for (int i = 0; i < 4; i++) shipArray[i] = new DeckOfTheShip();
 
         //гор. прав.
-        for (int i = 0; (i < 4) && (x + i < 10) ; i++) {
+        for (int i = 0; (i < 4) && (x + i < 10); i++) {
             if (board[x + i][y].isShip()) {
                 shipArray[shipCurrentPosition] = checkAndSetDestroyed (x + i, y);
                 shipCurrentPosition++;
@@ -166,32 +165,6 @@ class Board {
         return shipsSetupSuccessfull;
     }
 
-    @Deprecated
-    private char getCharForCell(Cell currentCell) {
-        if (!currentCell.isShot()) {
-            if (!currentCell.isShip()) return ('∙');//∙
-            else {
-                if (this.shipVisible) return ('█');
-                else return ('∙');
-            }
-        } else {
-            if (!currentCell.isShip()) return ('¤');
-            else return ('░');
-        }
-    }
-
-    @Deprecated
-    public void showBoard() {
-        System.out.println("    A  B  C  D  E  F  G  H  I  J ");
-        for (int i = 0; i < 10; i++) {
-            System.out.print("" + i + " ");
-            for (int j = 0; j < 10; j++) {
-                System.out.print("  " + getCharForCell(board[j][i]));
-            }
-            System.out.println();
-        }
-    }
-
     public void setShipsOnBoard() {
         decksLeft = 0;
 
@@ -262,7 +235,7 @@ class Board {
             shotIsDone = false;
             if (continueCheck) {
                 for (int i = 1; (i < 4) && (wreckedShip.firstShootedX + i*dX >= 0) && (wreckedShip.firstShootedY + i*dY >= 0); i++) {
-                    if (board[wreckedShip.firstShootedX + i*dX][wreckedShip.firstShootedY + i*dY].isShip()) {
+                    if (board[checkXorY(wreckedShip.firstShootedX + i*dX)][checkXorY(wreckedShip.firstShootedY + i*dY)].isShip()) {
                         if(direction == 0 || direction == 1) {
                             wreckedShip.leftChecked = true;
                             wreckedShip.rightChecked = true;
@@ -276,7 +249,7 @@ class Board {
                         if (board[wreckedShip.firstShootedX + i*dX][wreckedShip.firstShootedY + i*dY].isShot()) break;
                     }
 
-                    if (!board[wreckedShip.firstShootedX+ i*dX][wreckedShip.firstShootedY  + i*dY].isShot()) {
+                    if (!board[checkXorY(wreckedShip.firstShootedX+ i*dX)][checkXorY(wreckedShip.firstShootedY  + i*dY)].isShot()) {
                         wholeShipDestroyed = shootXY(wreckedShip.firstShootedX + i*dX, wreckedShip.firstShootedY + i*dY);
                         shotIsDone = true;
                         maxRange = i;

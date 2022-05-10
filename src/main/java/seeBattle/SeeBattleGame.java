@@ -4,17 +4,13 @@ import java.awt.*;
 
 public class SeeBattleGame {
 
-    //Board board1 = new Board();
-    //Board board2 = new Board();
     Board board1;
     Board board2;
     public boolean fullRedraw;
     final private char[] TXT = {'a','b','c','d','e','f','g','h','i','j'};
-    //private boolean redrawFilds = true;
     public GameState gameState = GameState.PLAYED;
     private int fieldStartX = 0;
     private int fieldStartY = 0;
-    //private int nuberOfDrowing = 0;
     public boolean makingMove = false;
 
     public void setStartXY (int x, int y){
@@ -152,7 +148,6 @@ public class SeeBattleGame {
             if (((mouseX - fieldStartX - stepOfGrid * 19) > 0 && (mouseX - fieldStartX - stepOfGrid * 19) < stepOfGrid*4)
                     && ((mouseY - fieldStartY - stepOfGrid * 13) > 0 && (mouseY - fieldStartY - stepOfGrid * 13) < stepOfGrid))
                 SeeBattleNewGame();
-
              */
 
             if (10 > x / stepOfGrid && x > 0 && 10 > y / stepOfGrid && y > 0) {
@@ -170,24 +165,19 @@ public class SeeBattleGame {
     }
 
     public void SeeBattleNewGame(){
+
         GameState gameState = GameState.PLAYED;
         board1 = new Board();
         board1.setShipsOnBoard();
-        //System.out.println(board1.decksLeft);
-
-        //for (int i = 0;i < 33;i++) { board1.cpuMakeShoot(); }
-        //board1.showBoard();
+        //for (int i = 0; i < 15; i++) { board1.cpuMakeShoot(); }
 
         board2 = new Board();
         board2.setShipsOnBoard();
-
         board2.setShipVisible(false);
-        fullRedraw = true;
-        //board2.shipVisible = true;
-        //gameState = gameState.PLAYED;
+        //for (int i = 0; i < 15; i++) {board2.cpuMakeShoot(); }
 
-        //for (int i = 0;i < 33;i++) {board2.cpuMakeShoot(); }
-        //board2.showBoard();
+        fullRedraw = true;
+
     }
 
     public SeeBattleGame() {
